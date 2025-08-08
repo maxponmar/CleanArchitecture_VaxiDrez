@@ -29,5 +29,5 @@ var movies = new List<Video>()
     }
 };
 
-dbContext.Videos.AddRange(movies);
+await dbContext.Videos.AddRangeAsync(movies);
 await dbContext.SaveChangesAsync();
