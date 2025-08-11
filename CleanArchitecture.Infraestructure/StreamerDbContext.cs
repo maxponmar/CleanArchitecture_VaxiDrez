@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Data;
+﻿namespace CleanArchitecture.Infraestructure;
 
 public class StreamerDbContext : DbContext
 {
