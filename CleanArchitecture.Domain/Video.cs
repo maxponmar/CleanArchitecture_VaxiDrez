@@ -1,7 +1,6 @@
 ﻿namespace CleanArchitecture.Domain;
-public class Video
+public class Video : BaseDomainModel
 {
-    public int Id { get; set; }
     public string? Nombre { get; set; }
     public int? StreamerId { get; set; }
     public virtual Streamer? Streamer { get; set; }
