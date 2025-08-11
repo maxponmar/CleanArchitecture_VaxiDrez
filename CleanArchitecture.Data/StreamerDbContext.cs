@@ -19,6 +19,12 @@ public class StreamerDbContext : DbContext
             .HasForeignKey(v => v.StreamerId)
             .IsRequired()
             .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Video>()
+            .HasMany(v => v.Actores)
+            .WithMany(a => a.Videos)
+            .UsingEntity<VideoActor>(va =>
+                va.HasKey(e => new { e.VideoId, e.ActorId }));
     }
 
     public DbSet<Streamer> Streamers { get; set; }
