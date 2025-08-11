@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructure", "Infraest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.API", "CleanArchitecture.API\CleanArchitecture.API.csproj", "{3CE91779-B824-47C8-9ADE-B5CF6F6ACCDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Application", "CleanArchitecture.Application\CleanArchitecture.Application.csproj", "{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3CE91779-B824-47C8-9ADE-B5CF6F6ACCDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CE91779-B824-47C8-9ADE-B5CF6F6ACCDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CE91779-B824-47C8-9ADE-B5CF6F6ACCDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +59,6 @@ Global
 		{F9860D3A-DF2B-4C3F-8D0E-3767B7EFE37F} = {F85606A6-57C5-4E9E-8A19-18BE21985F06}
 		{34354C41-93EE-405D-AF3E-1791100CE9D4} = {2C42CDD3-1822-4FCE-BBDA-1299AF7FFAE2}
 		{3CE91779-B824-47C8-9ADE-B5CF6F6ACCDA} = {2C799807-8751-4039-840F-88DF0833BCF0}
+		{CE535B54-4F9F-4533-B553-FC8BC0A5C5CB} = {F85606A6-57C5-4E9E-8A19-18BE21985F06}
 	EndGlobalSection
 EndGlobal
