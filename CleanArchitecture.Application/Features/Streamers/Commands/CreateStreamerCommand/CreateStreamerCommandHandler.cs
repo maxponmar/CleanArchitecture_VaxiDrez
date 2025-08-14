@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Application.Features.Streamers.Commands;
+﻿namespace CleanArchitecture.Application.Features.Streamers.Commands.CreateStreamerCommand;
 
 public class CreateStreamerCommandHandler(
     IStreamerRepository streamerRepository, 
