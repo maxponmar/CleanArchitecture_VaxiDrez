@@ -1,6 +1,8 @@
-﻿namespace CleanArchitecture.Application.Middlewares;
+﻿using Wolverine;
 
-public class UnhandledExceptionMiddleware(ILogger<UnhandledExceptionMiddleware> logger)
+namespace CleanArchitecture.Application.Middlewares;
+
+public abstract class UnhandledExceptionMiddleware(ILogger<UnhandledExceptionMiddleware> logger)
 {
     private readonly ILogger _logger = logger;
 
