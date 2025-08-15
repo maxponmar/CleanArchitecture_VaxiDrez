@@ -7,5 +7,6 @@ global using CleanArchitecture.Application.Models;
 global using CleanArchitecture.Domain;
 global using CleanArchitecture.Domain.Common;
 global using FluentValidation;
+global using FluentValidation.Results;
 global using Mapster;
 global using Microsoft.Extensions.Logging;
