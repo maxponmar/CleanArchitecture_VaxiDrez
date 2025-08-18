@@ -1,6 +1,6 @@
 ﻿namespace CleanArchitecture.Application.Features.Streamers.Commands.DeleteStreamerCommand;
 
-public class DeleteStreamerCommand
+public class DeleteStreamerCommand(int id)
 {
-    public int Id { get; set; }
+    public int Id { get; set; } = id;
 }
