@@ -1,7 +1,4 @@
-﻿using CleanArchitecture.Application.Exceptions;
-using Wolverine.Persistence;
-
-namespace CleanArchitecture.Application.Features.Streamers.Commands.UpdateStreamerCommand;
+﻿namespace CleanArchitecture.Application.Features.Streamers.Commands.UpdateStreamerCommand;
 
 public class UpdateStreamerCommandHandler(
     IStreamerRepository streamerRepository,
@@ -19,9 +16,12 @@ public class UpdateStreamerCommandHandler(
         // }
         
         request.Adapt(streamerToUpdate);
-        await streamerRepository.UpdateAsync(streamerToUpdate);
-        logger.LogInformation($"Streamer with id: {request.Id} updated successfully.");
+        if (streamerToUpdate == null)
+            throw new NotFoundException(nameof(Streamer), request.Id);
         
+        await streamerRepository.UpdateAsync(streamerToUpdate);
+        
+        logger.LogInformation($"Streamer with id: {request.Id} updated successfully.");
         return streamerToUpdate.Adapt<UpdateStreamerCommandDto>();
     }
 }

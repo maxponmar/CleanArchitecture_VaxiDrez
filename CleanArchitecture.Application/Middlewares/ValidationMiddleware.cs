@@ -1,4 +1,6 @@
-﻿namespace CleanArchitecture.Application.Middlewares;
+﻿using ValidationException = FluentValidation.ValidationException;
+
+namespace CleanArchitecture.Application.Middlewares;
 
 public class ValidationMiddleware(IServiceProvider serviceProvider)
 {

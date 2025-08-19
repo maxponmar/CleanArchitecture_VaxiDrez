@@ -2,13 +2,15 @@
 
 public class VideoRepository(StreamerDbContext context) : BaseRepository<Video>(context), IVideoRepository
 {
+    private readonly StreamerDbContext _context = context;
+
     public async Task<Video?> GetVideoByName(string name)
     {
-        return await context.Videos.Where(v => v.Nombre == name).SingleOrDefaultAsync();
+        return await _context.Videos.Where(v => v.Nombre == name).SingleOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Video>> GetVideoByUsername(string username)
     {
-        return await context.Videos.Where(v => v.CreatedBy == username).ToListAsync();
+        return await _context.Videos.Where(v => v.CreatedBy == username).ToListAsync();
     }
 }
