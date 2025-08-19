@@ -31,7 +31,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -40,7 +40,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -50,7 +50,10 @@ namespace CleanArchitecture.Infraestructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actor");
+                    b.HasIndex("Nombre", "Apellido")
+                        .HasDatabaseName("IX_Actor_Nombre_Apellido");
+
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
@@ -62,7 +65,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -71,7 +74,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -86,7 +89,10 @@ namespace CleanArchitecture.Infraestructure.Migrations
 
                     b.HasIndex("VideoId");
 
-                    b.ToTable("Director");
+                    b.HasIndex("Nombre", "Apellido")
+                        .HasDatabaseName("IX_Director_Nombre_Apellido");
+
+                    b.ToTable("Directors");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Streamer", b =>
@@ -104,7 +110,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -116,6 +122,11 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Streamer_Nombre_Unique")
+                        .HasFilter("[Nombre] IS NOT NULL");
 
                     b.ToTable("Streamers");
                 });
@@ -135,7 +146,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("StreamerId")
                         .HasColumnType("int");
@@ -147,6 +158,9 @@ namespace CleanArchitecture.Infraestructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .HasDatabaseName("IX_Video_Nombre");
 
                     b.HasIndex("StreamerId");
 
@@ -180,7 +194,7 @@ namespace CleanArchitecture.Infraestructure.Migrations
 
                     b.HasIndex("ActorId");
 
-                    b.ToTable("VideoActor");
+                    b.ToTable("VideoActors");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
