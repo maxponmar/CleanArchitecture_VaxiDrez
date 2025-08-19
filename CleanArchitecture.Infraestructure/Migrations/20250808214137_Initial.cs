@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace CleanArchitecture.Infraestructure.Entities
+namespace CleanArchitecture.Infraestructure.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

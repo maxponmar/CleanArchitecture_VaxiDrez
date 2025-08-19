@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CleanArchitecture.Infraestructure.Entities
+namespace CleanArchitecture.Infraestructure.Migrations
 {
     [DbContext(typeof(StreamerDbContext))]
     [Migration("20250808214137_Initial")]
