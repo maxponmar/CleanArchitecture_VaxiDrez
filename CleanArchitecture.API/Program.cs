@@ -1,3 +1,5 @@
+using CleanArchitecture.Infraestructure.Persistance;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +17,25 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+// Seed the database
+// using (var scope = app.Services.CreateScope())
+// {
+//     var services = scope.ServiceProvider;
+//     var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+//     var logger = loggerFactory.CreateLogger<StreamerDbContextSeed>();
+//     
+//     try
+//     {
+//         var context = services.GetRequiredService<StreamerDbContext>();
+//         await StreamerDbContextSeed.SeedAsync(context, logger);
+//     }
+//     catch (Exception ex)
+//     {
+//         logger.LogError(ex, "An error occurred seeding the DB");
+//     }
+// }
+
 
 app.UseHttpsRedirection();
 
