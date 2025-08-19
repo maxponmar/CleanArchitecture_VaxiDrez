@@ -30,5 +30,5 @@ public class StreamerController(IMessageBus messageBus) : ControllerBase
         var command = new DeleteStreamerCommand(id);
         await messageBus.InvokeAsync(command);
         return NoContent();
-    }
+    } 
 }
