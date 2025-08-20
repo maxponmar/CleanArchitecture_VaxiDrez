@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArchitecture.Identity.Migrations
 {
     [DbContext(typeof(CleanArchitectureIdentityDbContext))]
-    [Migration("20250820154910_Initial")]
+    [Migration("20250820155302_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -102,17 +102,17 @@ namespace CleanArchitecture.Identity.Migrations
                         {
                             Id = "7e8ce125-dba9-4ca3-8a14-9278a4194dfe",
                             AccessFailedCount = 0,
-                            Apellidos = "",
-                            ConcurrencyStamp = "27c687de-92eb-41b9-b512-5872b235b054",
+                            Apellidos = "Flow",
+                            ConcurrencyStamp = "6b60ecef-7fc4-4028-8a21-8b75085c24fb",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            Nombre = "",
+                            Nombre = "Maxi",
                             NormalizedEmail = "ADMIN@LOCALHOST.com",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJCV9RvC1Vtc4hncpBLKiYkUlNvHok//3zEkdC9o6bpIUwllfCrInli2tfcBiJaVKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELdnhT6MA56RzK1ug41MdRALogqn0AvDM9H7u+nkuUzgStXgWcuQFZd2pW98MqZvIg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0e0995b7-58c4-432e-b700-4743c247fc42",
+                            SecurityStamp = "1e0b2fc4-70c0-40a4-a7e1-4d949dd671ee",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -120,17 +120,17 @@ namespace CleanArchitecture.Identity.Migrations
                         {
                             Id = "c6a02dc4-519e-44e0-b48e-96e8fccf79a2",
                             AccessFailedCount = 0,
-                            Apellidos = "",
-                            ConcurrencyStamp = "4f8a15ba-56fb-4660-9ec2-38adb36a8480",
+                            Apellidos = "Perez",
+                            ConcurrencyStamp = "e87976a8-ea3c-4770-ab71-a06fd5b224cc",
                             Email = "juanperez@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            Nombre = "",
+                            Nombre = "Juan",
                             NormalizedEmail = "JUANPEREZ@LOCALHOST.com",
                             NormalizedUserName = "JUANPEREZ",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM2CnpD/32mmUOzaiHDuEm81voxUrmMBr5XdN8DGTIlsPwJFih1iEwZwYPyAO+/kkA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENRdEXfmGbKZKnPdf1/7KAC4s+JMNlax+1W91g5ZuW/oPD1iptv/o/Td8jWFxQCvlQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f7fd24e-b0c0-44ea-a381-d14256f0f516",
+                            SecurityStamp = "8ef53cd4-aa93-4d70-9023-9e7a604883a2",
                             TwoFactorEnabled = false,
                             UserName = "juanperez"
                         });

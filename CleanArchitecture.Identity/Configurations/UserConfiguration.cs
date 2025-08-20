@@ -16,6 +16,7 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                 Nombre = "Maxi",
                 Apellidos = "Flow",
                 PasswordHash = hasher.HashPassword(null, "admin123."),
+                ConcurrencyStamp = Guid.NewGuid().ToString()
             },
             new ApplicationUser
             {
@@ -28,6 +29,7 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                 Nombre = "Juan",
                 Apellidos = "Perez",
                 PasswordHash = hasher.HashPassword(null, "perez123."),
+                ConcurrencyStamp = Guid.NewGuid().ToString()
             });
     }
 }

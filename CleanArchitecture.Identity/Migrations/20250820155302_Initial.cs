@@ -174,8 +174,8 @@ namespace CleanArchitecture.Identity.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Apellidos", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nombre", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "7e8ce125-dba9-4ca3-8a14-9278a4194dfe", 0, "", "27c687de-92eb-41b9-b512-5872b235b054", "admin@localhost.com", true, false, null, "", "ADMIN@LOCALHOST.com", "ADMIN", "AQAAAAIAAYagAAAAEJCV9RvC1Vtc4hncpBLKiYkUlNvHok//3zEkdC9o6bpIUwllfCrInli2tfcBiJaVKA==", null, false, "0e0995b7-58c4-432e-b700-4743c247fc42", false, "admin" },
-                    { "c6a02dc4-519e-44e0-b48e-96e8fccf79a2", 0, "", "4f8a15ba-56fb-4660-9ec2-38adb36a8480", "juanperez@localhost.com", true, false, null, "", "JUANPEREZ@LOCALHOST.com", "JUANPEREZ", "AQAAAAIAAYagAAAAEM2CnpD/32mmUOzaiHDuEm81voxUrmMBr5XdN8DGTIlsPwJFih1iEwZwYPyAO+/kkA==", null, false, "6f7fd24e-b0c0-44ea-a381-d14256f0f516", false, "juanperez" }
+                    { "7e8ce125-dba9-4ca3-8a14-9278a4194dfe", 0, "Flow", "6b60ecef-7fc4-4028-8a21-8b75085c24fb", "admin@localhost.com", true, false, null, "Maxi", "ADMIN@LOCALHOST.com", "ADMIN", "AQAAAAIAAYagAAAAELdnhT6MA56RzK1ug41MdRALogqn0AvDM9H7u+nkuUzgStXgWcuQFZd2pW98MqZvIg==", null, false, "1e0b2fc4-70c0-40a4-a7e1-4d949dd671ee", false, "admin" },
+                    { "c6a02dc4-519e-44e0-b48e-96e8fccf79a2", 0, "Perez", "e87976a8-ea3c-4770-ab71-a06fd5b224cc", "juanperez@localhost.com", true, false, null, "Juan", "JUANPEREZ@LOCALHOST.com", "JUANPEREZ", "AQAAAAIAAYagAAAAENRdEXfmGbKZKnPdf1/7KAC4s+JMNlax+1W91g5ZuW/oPD1iptv/o/Td8jWFxQCvlQ==", null, false, "8ef53cd4-aa93-4d70-9023-9e7a604883a2", false, "juanperez" }
                 });
 
             migrationBuilder.InsertData(
