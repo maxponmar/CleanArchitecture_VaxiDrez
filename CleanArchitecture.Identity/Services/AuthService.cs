@@ -1,14 +1,14 @@
 ﻿namespace CleanArchitecture.Identity.Services;
 
 public class AuthService(
-    UserManager<ApplicationUser> usermanager,
+    UserManager<ApplicationUser> userManager,
     SignInManager<ApplicationUser> signInManager,
     IOptions<JwtSettings> jwtSettings)
     : IAuthService
 {
     public async Task<AuthResponse> Login(AuthRequest request)
     {
-        var user = await usermanager.FindByEmailAsync(request.Email);
+        var user = await userManager.FindByEmailAsync(request.Email);
         if(user == null || user.UserName == null)
             throw new Exception($"User {request.Email} not found");
 
@@ -30,11 +30,11 @@ public class AuthService(
 
     public async Task<RegistrationResponse> Register(RegistrationRequest request)
     {
-        var existingUser = await usermanager.FindByNameAsync(request.Username);
+        var existingUser = await userManager.FindByNameAsync(request.Username);
         if(existingUser != null)
             throw new Exception($"User {request.Email} already exists");
         
-        var existingEmail = await usermanager.FindByEmailAsync(request.Email);
+        var existingEmail = await userManager.FindByEmailAsync(request.Email);
         if(existingEmail != null)
             throw new Exception($"Email {request.Email} already exists");
         
@@ -47,10 +47,10 @@ public class AuthService(
             EmailConfirmed = true
         };
         
-        var result = await usermanager.CreateAsync(user, request.Password);
+        var result = await userManager.CreateAsync(user, request.Password);
         if (result.Succeeded)
         {
-            await usermanager.AddToRoleAsync(user, "Operator");
+            await userManager.AddToRoleAsync(user, "Operator");
             var token = await GenerateToken(user);
             return new RegistrationResponse()
             {
@@ -66,8 +66,8 @@ public class AuthService(
 
     private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
     {
-        var userClaims = await usermanager.GetClaimsAsync(user);
-        var roles = await usermanager.GetRolesAsync(user);
+        var userClaims = await userManager.GetClaimsAsync(user);
+        var roles = await userManager.GetRolesAsync(user);
         
         var roleClaims = new List<Claim>();
         foreach (var role in roles)
