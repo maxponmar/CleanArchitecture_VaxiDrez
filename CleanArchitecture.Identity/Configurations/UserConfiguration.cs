@@ -13,6 +13,8 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                 Email = "admin@localhost.com",
                 NormalizedEmail = "ADMIN@LOCALHOST.com",
                 EmailConfirmed = true,
+                Nombre = "Maxi",
+                Apellidos = "Flow",
                 PasswordHash = hasher.HashPassword(null, "admin123."),
             },
             new ApplicationUser
@@ -23,6 +25,8 @@ public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
                 Email = "juanperez@localhost.com",
                 NormalizedEmail = "JUANPEREZ@LOCALHOST.com",
                 EmailConfirmed = true,
+                Nombre = "Juan",
+                Apellidos = "Perez",
                 PasswordHash = hasher.HashPassword(null, "perez123."),
             });
     }
