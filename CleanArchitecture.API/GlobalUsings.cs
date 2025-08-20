@@ -5,6 +5,8 @@ global using CleanArchitecture.Application.Features.Streamers.Commands.CreateStr
 global using CleanArchitecture.Application.Features.Streamers.Commands.DeleteStreamerCommand;
 global using CleanArchitecture.Application.Features.Streamers.Commands.UpdateStreamerCommand;
 global using CleanArchitecture.Application.Features.Videos.Queries.GetVideosList;
+global using CleanArchitecture.Identity;
 global using CleanArchitecture.Infraestructure;
+global using CleanArchitecture.Infraestructure.Persistance;
 global using Microsoft.AspNetCore.Mvc;
 global using Wolverine;
