@@ -3,7 +3,7 @@
 public class AuthService(
     UserManager<ApplicationUser> usermanager,
     SignInManager<ApplicationUser> signInManager,
-    JwtSettings jwtSettings)
+    IOptions<JwtSettings> jwtSettings)
     : IAuthService
 {
     public async Task<AuthResponse> Login(AuthRequest request)
@@ -79,15 +79,18 @@ public class AuthService(
             new Claim(JwtRegisteredClaimNames.Email, user.Email ?? string.Empty),
             new Claim(CustomClaimTypes.Uid, user.Id),
         }.Union(userClaims).Union(roleClaims);
-        
-        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+
+        var jwtKey = Environment.GetEnvironmentVariable(jwtSettings.Value.Key);
+        if(jwtKey == null)
+            throw new Exception("JwtKey is null");
+        var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
         var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
         var jwtSecurityToken = new JwtSecurityToken(
-            issuer: jwtSettings.Issuer,
-            audience: jwtSettings.Audience,
+            issuer: jwtSettings.Value.Issuer,
+            audience: jwtSettings.Value.Audience,
             claims: claims,
-            expires: DateTime.Now.AddMinutes(jwtSettings.ExpirationInMinutes),
+            expires: DateTime.Now.AddMinutes(jwtSettings.Value.ExpirationInMinutes),
             signingCredentials: signingCredentials);
         
         return jwtSecurityToken;
