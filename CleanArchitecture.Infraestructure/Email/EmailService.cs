@@ -4,7 +4,8 @@ public class EmailService(IOptions<EmailSettings> emailSettings, ILogger<EmailSe
 {
     public async Task<bool> SendEmailAsync(Application.Models.Email email)
     {
-        var client = new SendGridClient(emailSettings.Value.ApiKey);
+        var apiKey = Environment.GetEnvironmentVariable(emailSettings.Value.ApiKey) ?? emailSettings.Value.ApiKey;
+        var client = new SendGridClient(apiKey);
 
         var subject = email.Subject;
         var to = new EmailAddress(email.To);

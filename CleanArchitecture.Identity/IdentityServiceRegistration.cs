@@ -20,7 +20,11 @@ public static class IdentityServiceRegistration
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
         {
-            var jwtKey = configuration["JwtSettings:Key"];
+            var jwtEnvVarName = configuration["JwtSettings:Key"];
+            if(jwtEnvVarName == null)
+                throw new Exception("JwtKey Environment Variable name is null");
+            
+            var jwtKey = Environment.GetEnvironmentVariable(jwtEnvVarName);
             if(jwtKey == null)
                 throw new Exception("JwtKey is null");
             
@@ -33,7 +37,7 @@ public static class IdentityServiceRegistration
                 ClockSkew = TimeSpan.Zero,
                 ValidIssuer = configuration["JwtSettings:Issuer"],
                 ValidAudience = configuration["JwtSettings:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtEnvVarName))
             };
         });
         
