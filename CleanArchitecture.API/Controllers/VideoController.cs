@@ -5,6 +5,7 @@
 public class VideoController(IMessageBus messageBus) : ControllerBase
 {
     [HttpGet("{username}", Name = "GetVideosByUsername")]
+    [Authorize]
     [ProducesResponseType(typeof(IEnumerable<VideosVm>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<VideosVm>>> GetVideosByUsername(string username)

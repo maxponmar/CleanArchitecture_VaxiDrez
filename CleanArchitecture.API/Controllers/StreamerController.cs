@@ -5,6 +5,7 @@
 public class StreamerController(IMessageBus messageBus) : ControllerBase
 {
     [HttpPost(Name = "CreateStreamer")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<int>> CreateStreamer([FromBody] CreateStreamerCommand command)
     {

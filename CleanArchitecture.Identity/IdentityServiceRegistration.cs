@@ -18,6 +18,7 @@ public static class IdentityServiceRegistration
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
         {
             var jwtEnvVarName = configuration["JwtSettings:Key"];
@@ -40,6 +41,8 @@ public static class IdentityServiceRegistration
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtEnvVarName))
             };
         });
+        services.AddAuthorization();
+
         
         return services;
     }

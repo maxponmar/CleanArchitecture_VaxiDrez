@@ -73,12 +73,14 @@ public class AuthService(
         foreach (var role in roles)
             roleClaims.Add(new Claim(ClaimTypes.Role, role));
 
-        var claims = new[]
+        var claims = new List<Claim>()
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.UserName ?? string.Empty),
             new Claim(JwtRegisteredClaimNames.Email, user.Email ?? string.Empty),
             new Claim(CustomClaimTypes.Uid, user.Id),
-        }.Union(userClaims).Union(roleClaims);
+        };
+        claims.AddRange(userClaims);
+        claims.AddRange(roleClaims);
 
         var jwtKey = Environment.GetEnvironmentVariable(jwtSettings.Value.Key);
         if(jwtKey == null)
