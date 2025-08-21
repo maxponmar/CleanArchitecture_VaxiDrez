@@ -3,10 +3,18 @@
 public class CreateStreamerCommandHandler(
     IStreamerRepository streamerRepository, 
     IEmailService emailService, 
-    ILogger<CreateStreamerCommandHandler> logger)
+    ILogger<CreateStreamerCommandHandler> logger,
+    IValidator<CreateStreamerCommand> validator)
 {
     public async Task<int> Handle(CreateStreamerCommand request, CancellationToken cancellationToken)
     {
+        // Validate the command
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            throw new Exceptions.ValidationException(validationResult.Errors);
+        }
+        
         var streamer = request.Adapt<Streamer>();
         await streamerRepository.AddAsync(streamer);
         

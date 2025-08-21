@@ -1,23 +1,20 @@
-﻿using ValidationException = FluentValidation.ValidationException;
+﻿using Wolverine;
 
 namespace CleanArchitecture.Application.Middlewares;
 
-public class ValidationMiddleware(IServiceProvider serviceProvider)
+public static class ValidationMiddleware
 {
-    public async ValueTask<object?> HandleAsync(object message, Func<object, ValueTask<object?>> inner)
+    public static async Task BeforeAsync<T>(T message, IServiceProvider serviceProvider, CancellationToken cancellationToken)
     {
-        var validatorType = typeof(IValidator<>).MakeGenericType(message.GetType());
-
-        if (serviceProvider.GetService(validatorType) is not IValidator validator) return await inner(message);
+        var validator = serviceProvider.GetService<IValidator<T>>();
         
-        var contextType = typeof(ValidationContext<>).MakeGenericType(message.GetType());
-        var validationContext = Activator.CreateInstance(contextType, message);
-
-        var validateMethod = validator.GetType().GetMethod("Validate", [contextType]);
-
-        if (validateMethod?.Invoke(validator, [validationContext]) is ValidationResult { IsValid: false } result)
-            throw new ValidationException(result.Errors);
-
-        return await inner(message);
+        if (validator == null) return;
+        
+        var validationResult = await validator.ValidateAsync(message, cancellationToken);
+        
+        if (!validationResult.IsValid)
+        {
+            throw new Exceptions.ValidationException(validationResult.Errors);
+        }
     }
 }
