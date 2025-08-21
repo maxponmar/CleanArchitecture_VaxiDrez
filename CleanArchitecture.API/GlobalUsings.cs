@@ -1,5 +1,9 @@
 ﻿// Global using directives
 
+global using System.Net;
+global using System.Text.Json;
+global using CleanArchitecture.API.Exceptions;
+global using CleanArchitecture.API.Middlewares;
 global using CleanArchitecture.Application;
 global using CleanArchitecture.Application.Contracts.Identity;
 global using CleanArchitecture.Application.Features.Streamers.Commands.CreateStreamerCommand;

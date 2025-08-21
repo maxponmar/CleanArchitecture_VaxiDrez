@@ -14,6 +14,15 @@ builder.Services.AddCors(options =>
     );
 });
 
+builder.Services.AddWolverine(opts =>
+{
+    // Automatically discover and register all handlers in the current assembly
+    opts.Discovery.DisableConventionalDiscovery(false);
+            
+    // Include assemblies for handler discovery
+    opts.Discovery.IncludeAssembly(typeof(ApplicationServicesRegistration).Assembly);
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -45,6 +54,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
